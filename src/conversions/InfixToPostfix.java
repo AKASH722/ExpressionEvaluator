@@ -1,19 +1,19 @@
 package conversions;
 
-import stack.Stack;
+import stack.CharacterStack;
 
 public class InfixToPostfix extends Conversions{
     private String postfix;
-    private String input;
-    int rank;
-    private Stack stack;
-    public InfixToPostfix(String input) {
+    private String infix;
+    private int rank;
+    private CharacterStack characterStack;
+    public InfixToPostfix(String infix) {
         postfix = "";
         rank = 0;
-        stack = new Stack(input.length());
-        stack.push('(');
-        super.input=input;
-        this.input=input+')';
+        characterStack = new CharacterStack(infix.length());
+        characterStack.push('(');
+        super.input= infix;
+        this.infix = infix +')';
     }
 
     private int precedence(char input) {
@@ -48,28 +48,29 @@ public class InfixToPostfix extends Conversions{
 
     public void convert() {
         int i=0;
-        while(i!=input.length()) {
-            checkAndPush(input.charAt(i++));
+        while(i!= infix.length()) {
+            checkAndPush(infix.charAt(i++));
         }
         output = postfix;
-        if(calculateRank(output)!=1) {
+        rank=calculateRank(output);
+        if(rank!=1) {
             System.out.println("Conversion failed");
         }
     }
 
-    public void checkAndPush(char next) {
+    private void checkAndPush(char next) {
         if(next==')') {
-            while(stack.stack[stack.top]!='(') {
-                char temp = stack.pop();
+            while(characterStack.stack[characterStack.top]!='(') {
+                char temp = characterStack.pop();
                 postfix += temp;
             }
-            stack.pop();
+            characterStack.pop();
         } else {
-            while (precedence(next) < precedenceStack(stack.stack[stack.top])) {
-                char temp = stack.pop();
+            while (precedence(next) < precedenceStack(characterStack.stack[characterStack.top])) {
+                char temp = characterStack.pop();
                 postfix += temp;
             }
-            stack.push(next);
+            characterStack.push(next);
         }
     }
     public void display() {

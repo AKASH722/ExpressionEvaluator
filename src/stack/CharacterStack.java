@@ -1,16 +1,15 @@
 package stack;
 
-public class Stack {
+public class CharacterStack {
     public char[] stack;
     public int top;
-    public Stack(int size) {
+    public CharacterStack(int size) {
         stack = new char[size];
         top=-1;
     }
 
     public void push(char input) {
         stack[++top]=input;
-        //display();
     }
 
     public char pop() {

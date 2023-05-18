@@ -1,6 +1,7 @@
 import conversions.InfixToPostfix;
 import conversions.Conversions;
 import conversions.InfixToPrefix;
+import conversions.PostfixToInfix;
 
 
 import java.util.Scanner;
@@ -33,7 +34,7 @@ public class Main {
                         expression = new InfixToPrefix(input);
                     }
                     case "3" -> {
-
+                        expression = new PostfixToInfix(input);
                     }
                     case "4" -> {
 
