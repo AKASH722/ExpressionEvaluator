@@ -1,3 +1,5 @@
+package MAIN;
+
 import conversions.*;
 
 
@@ -6,20 +8,23 @@ import java.util.Scanner;
 public class Main {
     static Conversions expression;
     static Scanner scanner =  new Scanner(System.in);
-    static void options() {
+    public static void options() {
         System.out.println("""
-               
-               Press 0 --> Exit
-               Press 1 --> Infix to PostFix(Reverse Polish)
-               Press 2 --> Infix to PreFix(Polish)
-               Press 3 --> PostFix(Reverse Polish) to Infix
-               Press 4 --> PreFix(Polish) to Infix
-               Press 5 --> PostFix(Reverse Polish) to PreFix(Polish)
-               Press 6 --> PreFix(Polish) to PostFix(Reverse Polish)""");
+             
+             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\s
+             *  Press 0 --> Exit                                       *
+             *  Press 1 --> Infix to PostFix(Reverse Polish)           *
+             *  Press 2 --> Infix to PreFix(Polish)                    *
+             *  Press 3 --> PostFix(Reverse Polish) to Infix           *
+             *  Press 4 --> PreFix(Polish) to Infix                    *
+             *  Press 5 --> PostFix(Reverse Polish) to PreFix(Polish)  *
+             *  Press 6 --> PreFix(Polish) to PostFix(Reverse Polish)  *
+             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * \s
+             """);
         String choice =  scanner.nextLine();
         switch (choice) {
             case "0" -> {
-                return;
+                System.exit(0);
             }
             case "1","2","3","4","5","6" -> {
                 String input = getInput();
@@ -44,7 +49,9 @@ public class Main {
                     }
                 }
                 expression.convert();
+                System.out.println("* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
                 expression.display();
+                System.out.println("* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
             }
 
             default -> {
@@ -54,8 +61,10 @@ public class Main {
         options();
     }
     static String getInput() {
-        System.out.print("Enter an expression : ");
+        System.out.println("* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
+        System.out.print("* Enter an expression : ");
         String input = scanner.next().trim();
+        System.out.println("* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
         int rank = Conversions.calculateRank(input);
         String[] in = input.split("");
         int count_open=0,count_close=0;

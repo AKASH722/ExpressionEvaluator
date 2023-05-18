@@ -23,4 +23,12 @@ public  abstract class Conversions {
     public abstract void convert();
 
     public abstract void display();
+
+    public static void getSpaces(String input) {
+        int length=47-input.length()-1;
+        for (int i = 0; i < length; i++) {
+            System.out.print(" ");
+        }
+        System.out.print("*");
+    }
 }

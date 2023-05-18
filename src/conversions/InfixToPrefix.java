@@ -79,7 +79,11 @@ public class InfixToPrefix extends Conversions{
         }
     }
     public void display() {
-        System.out.println("Infix  : "+super.input);
-        System.out.println("Prefix : "+super.output);
+        System.out.print("* Infix   : "+super.input);
+        getSpaces(super.input);
+        System.out.println();
+        System.out.print("* Prefix  : "+super.output);
+        getSpaces(super.output);
+        System.out.println();
     }
 }

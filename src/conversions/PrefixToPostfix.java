@@ -22,7 +22,11 @@ public class PrefixToPostfix extends Conversions{
     }
 
     public void display() {
-        System.out.println("Prefix  : "+super.input);
-        System.out.println("Postfix : "+super.output);
+        System.out.print("* Prefix  : "+super.input);
+        getSpaces(super.input);
+        System.out.println();
+        System.out.print("* Postfix : "+super.output);
+        getSpaces(super.output);
+        System.out.println();
     }
 }

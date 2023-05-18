@@ -47,7 +47,11 @@ public class PrefixToInfix extends Conversions{
         }
     }
     public void display() {
-        System.out.println("PreFix  : "+super.input);
-        System.out.println("Infix   : "+super.output);
+        System.out.print("* PreFix  : "+super.input);
+        getSpaces(super.input);
+        System.out.println();
+        System.out.print("* Infix   : "+super.output);
+        getSpaces(super.output);
+        System.out.println();
     }
 }

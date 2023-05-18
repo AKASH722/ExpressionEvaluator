@@ -44,7 +44,11 @@ public class PostfixToInfix extends Conversions{
         }
     }
     public void display() {
-        System.out.println("Postfix  : "+super.input);
-        System.out.println("Infix    : "+super.output);
+        System.out.print("* Postfix : "+super.input);
+        getSpaces(super.input);
+        System.out.println();
+        System.out.print("* Infix   : "+super.output);
+        getSpaces(super.output);
+        System.out.println();
     }
 }
