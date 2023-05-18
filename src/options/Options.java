@@ -1,6 +1,8 @@
 package options;
 
 import conversions.*;
+import evaluations.Postfix;
+import evaluations.Prefix;
 import exceptions.InvalidExpression;
 
 
@@ -20,6 +22,8 @@ public class Options {
              *  Press 4 --> PreFix(Polish) to Infix                    *
              *  Press 5 --> PostFix(Reverse Polish) to PreFix(Polish)  *
              *  Press 6 --> PreFix(Polish) to PostFix(Reverse Polish)  *
+             *  Press 7 --> To Evaluate PostFix Expression             *
+             *  Press 8 --> To Evaluate Prefix Expression              *
              * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * \s
              """);
         String choice =  scanner.nextLine();
@@ -40,7 +44,16 @@ public class Options {
                 expression.display();
                 System.out.println("* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
             }
-
+            case "7" -> {
+                String input = getInput();
+                Postfix expressions = new Postfix(input);
+                expressions.calculate();
+            }
+            case "8" -> {
+                String input = getInput();
+                Prefix expressions = new Prefix(input);
+                expressions.calculate();
+            }
             default -> System.out.println("Invalid input");
 
         }
