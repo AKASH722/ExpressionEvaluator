@@ -1,6 +1,6 @@
 package stack;
 
-import MAIN.Main;
+import MAIN.Options;
 import exceptions.InvalidExpression;
 
 public class StringStack {
@@ -24,7 +24,7 @@ public class StringStack {
             }
         } catch(InvalidExpression e){
             System.out.println(e.getMessage());
-            Main.options();
+            Options.options();
             return "";
         }
     }

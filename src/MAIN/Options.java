@@ -6,7 +6,7 @@ import exceptions.InvalidExpression;
 
 import java.util.Scanner;
 
-public class Main {
+public class Options {
     static Conversions expression;
     static Scanner scanner =  new Scanner(System.in);
     public static void options() {
@@ -73,8 +73,5 @@ public class Main {
         }
         scanner.nextLine();
         return input;
-    }
-    public static void main(String[] args) {
-        options();
     }
 }
