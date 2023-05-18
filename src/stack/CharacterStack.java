@@ -1,5 +1,8 @@
 package stack;
 
+import exceptions.InvalidExpression;
+import options.Options;
+
 public class CharacterStack {
     public char[] stack;
     public int top;
@@ -9,10 +12,29 @@ public class CharacterStack {
     }
 
     public void push(char input) {
-        stack[++top]=input;
+        try {
+            if(top>=stack.length-1) {
+                throw new InvalidExpression("Invalid input expression type");
+            } else {
+                stack[++top]=input;
+            }
+        } catch(InvalidExpression e){
+            System.out.println(e.getMessage());
+            Options.options();
+        }
     }
 
     public char pop() {
-        return stack[top--];
+        try {
+            if(top==-1) {
+                throw new InvalidExpression("Invalid input expression type");
+            } else {
+                return stack[top--];
+            }
+        } catch(InvalidExpression e){
+            System.out.println(e.getMessage());
+            Options.options();
+            return 'a';
+        }
     }
 }

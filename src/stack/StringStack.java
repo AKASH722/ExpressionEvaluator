@@ -12,7 +12,16 @@ public class StringStack {
     }
 
     public void push(String input) {
-        stack[++top]=input;
+        try {
+            if(top>=stack.length-1) {
+                throw new InvalidExpression("Invalid input expression type");
+            } else {
+                stack[++top]=input;
+            }
+        } catch(InvalidExpression e){
+            System.out.println(e.getMessage());
+            Options.options();
+        }
     }
 
     public String pop() {
