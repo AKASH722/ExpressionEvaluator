@@ -1,7 +1,4 @@
-import conversions.InfixToPostfix;
-import conversions.Conversions;
-import conversions.InfixToPrefix;
-import conversions.PostfixToInfix;
+import conversions.*;
 
 
 import java.util.Scanner;
@@ -37,12 +34,13 @@ public class Main {
                         expression = new PostfixToInfix(input);
                     }
                     case "4" -> {
-
+                        expression = new PrefixToInfix(input);
                     }
                     case "5" -> {
-
+                        expression = new PostfixToPrefix(input);
                     }
                     case "6" -> {
+                        expression = new PrefixToPostfix(input);
                     }
                 }
                 expression.convert();
@@ -56,7 +54,7 @@ public class Main {
         options();
     }
     static String getInput() {
-        System.out.println("Enter an expression : ");
+        System.out.print("Enter an expression : ");
         String input = scanner.next().trim();
         int rank = Conversions.calculateRank(input);
         String[] in = input.split("");
