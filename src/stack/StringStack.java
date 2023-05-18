@@ -1,6 +1,6 @@
 package stack;
 
-import MAIN.Options;
+import options.Options;
 import exceptions.InvalidExpression;
 
 public class StringStack {

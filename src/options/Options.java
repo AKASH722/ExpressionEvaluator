@@ -1,4 +1,4 @@
-package MAIN;
+package options;
 
 import conversions.*;
 import exceptions.InvalidExpression;
