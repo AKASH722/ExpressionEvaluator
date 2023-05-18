@@ -3,7 +3,6 @@ package conversions;
 public class PrefixToPostfix extends Conversions{
     private String postfix;
     private String prefix;
-    private int rank;
     public PrefixToPostfix(String prefix) {
         this.prefix = prefix;
         this.input= prefix;
@@ -15,8 +14,7 @@ public class PrefixToPostfix extends Conversions{
         expression2.convert();
         this.postfix =expression2.output;
         this.output= postfix;
-        rank=calculateRank(output);
-        if(rank!=1) {
+        if(calculateRank(output)!=1) {
             System.out.println("Conversion failed");
         }
     }

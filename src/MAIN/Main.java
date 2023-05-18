@@ -1,6 +1,7 @@
 package MAIN;
 
 import conversions.*;
+import exceptions.InvalidExpression;
 
 
 import java.util.Scanner;
@@ -23,30 +24,16 @@ public class Main {
              """);
         String choice =  scanner.nextLine();
         switch (choice) {
-            case "0" -> {
-                System.exit(0);
-            }
+            case "0" -> System.exit(0);
             case "1","2","3","4","5","6" -> {
                 String input = getInput();
                 switch (choice) {
-                    case "1" -> {
-                        expression = new InfixToPostfix(input);
-                    }
-                    case "2" -> {
-                        expression = new InfixToPrefix(input);
-                    }
-                    case "3" -> {
-                        expression = new PostfixToInfix(input);
-                    }
-                    case "4" -> {
-                        expression = new PrefixToInfix(input);
-                    }
-                    case "5" -> {
-                        expression = new PostfixToPrefix(input);
-                    }
-                    case "6" -> {
-                        expression = new PrefixToPostfix(input);
-                    }
+                    case "1" -> expression = new InfixToPostfix(input);
+                    case "2" -> expression = new InfixToPrefix(input);
+                    case "3" -> expression = new PostfixToInfix(input);
+                    case "4" -> expression = new PrefixToInfix(input);
+                    case "5" -> expression = new PostfixToPrefix(input);
+                    case "6" -> expression = new PrefixToPostfix(input);
                 }
                 expression.convert();
                 System.out.println("* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
@@ -54,9 +41,8 @@ public class Main {
                 System.out.println("* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
             }
 
-            default -> {
-                System.out.println("Invalid input");
-            }
+            default -> System.out.println("Invalid input");
+
         }
         options();
     }
@@ -76,8 +62,12 @@ public class Main {
                 count_close++;
             }
         }
-        if(rank !=1 || input.length()==1 || count_open!=count_close) {
-            System.out.println("Invalid expression");
+        try {
+            if (rank != 1 || input.length() == 1 || count_open != count_close) {
+                throw new InvalidExpression("Invalid Expression");
+            }
+        } catch (InvalidExpression e) {
+            System.out.println(e.getMessage());
             scanner.nextLine();
             options();
         }

@@ -5,11 +5,9 @@ import stack.StringStack;
 public class PrefixToInfix extends Conversions{
     private String infix;
     private String prefix;
-    int rank;
     private StringStack stack;
     public PrefixToInfix(String prefix) {
         infix = "";
-        rank = 0;
         stack = new StringStack(prefix.length());
         super.input= prefix;
         StringBuilder temp_input = new StringBuilder(prefix);
@@ -24,8 +22,7 @@ public class PrefixToInfix extends Conversions{
         }
         infix=stack.pop();
         super.output=infix;
-        rank=calculateRank(output);
-        if(rank!=1) {
+        if(calculateRank(output)!=1) {
             System.out.println("Conversion failed");
         }
     }
