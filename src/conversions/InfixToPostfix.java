@@ -2,21 +2,21 @@ package conversions;
 
 import stack.Stack;
 
-public class InfixToPostfixWithParenthesis extends Conversions{
-    String postfix;
-    String input;
+public class InfixToPostfix extends Conversions{
+    private String postfix;
+    private String input;
     int rank;
-    public Stack stack;
-    public InfixToPostfixWithParenthesis(String input) {
+    private Stack stack;
+    public InfixToPostfix(String input) {
         postfix = "";
         rank = 0;
         stack = new Stack(input.length());
         stack.push('(');
         super.input=input;
-        this.input=input+')'+"#";
+        this.input=input+')';
     }
 
-    int precedence(char input) {
+    private int precedence(char input) {
         if (input == ')') {
             return 0;
         } else if((input == '(')) {
@@ -32,7 +32,7 @@ public class InfixToPostfixWithParenthesis extends Conversions{
         }
     }
 
-    int precedenceStack(char input) {
+    private int precedenceStack(char input) {
         if (input == ')' || (input == '(')) {
             return 0;
         } else if (input == '+' || input == '-') {
@@ -48,10 +48,13 @@ public class InfixToPostfixWithParenthesis extends Conversions{
 
     public void convert() {
         int i=0;
-        while(input.charAt(i)!='#') {
+        while(i!=input.length()) {
             checkAndPush(input.charAt(i++));
         }
         output = postfix;
+        if(calculateRank(output)!=1) {
+            System.out.println("Conversion failed");
+        }
     }
 
     public void checkAndPush(char next) {
@@ -68,5 +71,9 @@ public class InfixToPostfixWithParenthesis extends Conversions{
             }
             stack.push(next);
         }
+    }
+    public void display() {
+        System.out.println("Infix   : "+input);
+        System.out.println("Postfix : "+output);
     }
 }

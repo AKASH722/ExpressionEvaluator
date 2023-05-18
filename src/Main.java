@@ -1,5 +1,4 @@
-import conversions.InfixToPostfixWithParenthesis;
-import conversions.InfixToPostfixWithoutParenthesis;
+import conversions.InfixToPostfix;
 import conversions.Conversions;
 
 
@@ -23,12 +22,31 @@ public class Main {
             case "0" -> {
                 return;
             }
-            case "1" -> {
+            case "1","2","3","4","5","6" -> {
                 String input = getInput();
-                expression = new InfixToPostfixWithParenthesis(input);;
+                switch (choice) {
+                    case "1" -> {
+                        expression = new InfixToPostfix(input);
+                    }
+                    case "2" -> {
+
+                    }
+                    case "3" -> {
+
+                    }
+                    case "4" -> {
+
+                    }
+                    case "5" -> {
+
+                    }
+                    case "6" -> {
+                    }
+                }
                 expression.convert();
-                expression.display("PostFix");
+                expression.display();
             }
+
             default -> {
                 System.out.println("Invalid input");
             }

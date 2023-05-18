@@ -22,8 +22,5 @@ public  abstract class Conversions {
     }
     public abstract void convert();
 
-    public void display(String s) {
-        System.out.println("Infix : "+input);
-        System.out.println(s + " : "+output);
-    }
+    public abstract void display();
 }

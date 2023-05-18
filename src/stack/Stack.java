@@ -16,9 +16,4 @@ public class Stack {
     public char pop() {
         return stack[top--];
     }
-    void display() {
-        for(int i = top ;i >=0 ;i--) {
-            System.out.println(stack[i]);
-        }
-    }
 }
